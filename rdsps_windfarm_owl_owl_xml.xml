@@ -1,223 +1,29 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Ontology IRI="http://example.org/rdsps"
           xmlns="http://www.w3.org/2002/07/owl#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
           xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 
-  <!-- Ontology header -->
+  <!-- Basic annotations -->
   <Annotation>
     <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <Literal xml:lang="en">RDS-PS Example Ontology (Windfarm/Substation)</Literal>
-  </Annotation>
-  <Annotation>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <Literal xml:lang="en">An example OWL ontology that models RDS-PS style asset identifiers and structure (ISO 81346 inspired). Provided for loading in Protégé.</Literal>
-  </Annotation>
-  <Annotation>
-    <AnnotationProperty IRI="http://www.w3.org/2002/07/owl#versionInfo"/>
-    <Literal>2026-03-23-example</Literal>
+    <Literal xml:lang="en">RDS-PS Example Ontology (Minimal)</Literal>
   </Annotation>
 
-  <!-- Declarations: Classes -->
-  <Declaration>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Asset</IRI>
-    <Literal xml:lang="en">Asset</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#Asset</IRI>
-    <Literal xml:lang="en">Generic asset superclass (equipment, sensors, systems).</Literal>
-  </AnnotationAssertion>
+  <!-- Class declarations -->
+  <Declaration><Class IRI="http://example.org/rdsps#Asset"/></Declaration>
+  <Declaration><Class IRI="http://example.org/rdsps#Location"/></Declaration>
+  <Declaration><Class IRI="http://example.org/rdsps#ProductAspect"/></Declaration>
 
-  <Declaration>
-    <Class IRI="http://example.org/rdsps#Location"/>
-  </Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Location</IRI>
-    <Literal xml:lang="en">Location</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#Location</IRI>
-    <Literal xml:lang="en">Location aspect (+) in RDS-PS (plant, substation, room, cabinet).</Literal>
-  </AnnotationAssertion>
+  <!-- Subclass axioms -->
   <SubClassOf>
     <Class IRI="http://example.org/rdsps#Location"/>
     <Class IRI="http://example.org/rdsps#Asset"/>
   </SubClassOf>
 
-  <Declaration>
-    <Class IRI="http://example.org/rdsps#FunctionAspect"/>
-  </Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#FunctionAspect</IRI>
-    <Literal xml:lang="en">FunctionAspect</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#FunctionAspect</IRI>
-    <Literal xml:lang="en">Function aspect (=) in RDS-PS (generation, distribution, protection).</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#FunctionAspect"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </SubClassOf>
-
-  <Declaration>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#ProductAspect</IRI>
-    <Literal xml:lang="en">ProductAspect</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#ProductAspect</IRI>
-    <Literal xml:lang="en">Product aspect (-) in RDS-PS (transformer, gearbox, generator).</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </SubClassOf>
-
-  <Declaration>
-    <Class IRI="http://example.org/rdsps#TypeAspect"/>
-  </Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#TypeAspect</IRI>
-    <Literal xml:lang="en">TypeAspect</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#TypeAspect</IRI>
-    <Literal xml:lang="en">Type aspect (%) in RDS-PS (equipment model/class).</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#TypeAspect"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </SubClassOf>
-
-  <!-- Domain-specific subclasses -->
-  <Declaration><Class IRI="http://example.org/rdsps#WindFarm"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#WindFarm</IRI>
-    <Literal xml:lang="en">WindFarm</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#WindFarm"/>
-    <Class IRI="http://example.org/rdsps#Location"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#Substation"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Substation</IRI>
-    <Literal xml:lang="en">Substation</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Substation"/>
-    <Class IRI="http://example.org/rdsps#Location"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#Turbine"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Turbine</IRI>
-    <Literal xml:lang="en">Turbine</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Turbine"/>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#Gearbox"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Gearbox</IRI>
-    <Literal xml:lang="en">Gearbox</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Gearbox"/>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#Generator"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Generator</IRI>
-    <Literal xml:lang="en">Generator</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Generator"/>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#Transformer"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Transformer</IRI>
-    <Literal xml:lang="en">Transformer</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Transformer"/>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#Sensor"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#Sensor</IRI>
-    <Literal xml:lang="en">Sensor</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Sensor"/>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#TemperatureSensor"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#TemperatureSensor</IRI>
-    <Literal xml:lang="en">TemperatureSensor</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#TemperatureSensor"/>
-    <Class IRI="http://example.org/rdsps#Sensor"/>
-  </SubClassOf>
-
-  <Declaration><Class IRI="http://example.org/rdsps#VibrationSensor"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#VibrationSensor</IRI>
-    <Literal xml:lang="en">VibrationSensor</Literal>
-  </AnnotationAssertion>
-  <SubClassOf>
-    <Class IRI="http://example.org/rdsps#VibrationSensor"/>
-    <Class IRI="http://example.org/rdsps#Sensor"/>
-  </SubClassOf>
-
-  <!-- Declarations: Object properties -->
+  <!-- Object property declaration -->
   <Declaration><ObjectProperty IRI="http://example.org/rdsps#locatedIn"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#locatedIn</IRI>
-    <Literal xml:lang="en">locatedIn</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#locatedIn</IRI>
-    <Literal xml:lang="en">Relates an Asset to the Location (+) it is placed in.</Literal>
-  </AnnotationAssertion>
   <ObjectPropertyDomain>
     <ObjectProperty IRI="http://example.org/rdsps#locatedIn"/>
     <Class IRI="http://example.org/rdsps#Asset"/>
@@ -227,280 +33,43 @@
     <Class IRI="http://example.org/rdsps#Location"/>
   </ObjectPropertyRange>
 
-  <Declaration><ObjectProperty IRI="http://example.org/rdsps#hasFunction"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasFunction</IRI>
-    <Literal xml:lang="en">hasFunction</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#hasFunction</IRI>
-    <Literal xml:lang="en">Relates an Asset to its Function (=) aspect.</Literal>
-  </AnnotationAssertion>
-  <ObjectPropertyDomain>
-    <ObjectProperty IRI="http://example.org/rdsps#hasFunction"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyDomain>
-  <ObjectPropertyRange>
-    <ObjectProperty IRI="http://example.org/rdsps#hasFunction"/>
-    <Class IRI="http://example.org/rdsps#FunctionAspect"/>
-  </ObjectPropertyRange>
-
-  <Declaration><ObjectProperty IRI="http://example.org/rdsps#hasProduct"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasProduct</IRI>
-    <Literal xml:lang="en">hasProduct</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#hasProduct</IRI>
-    <Literal xml:lang="en">Relates an Asset to its Product (-) aspect.</Literal>
-  </AnnotationAssertion>
-  <ObjectPropertyDomain>
-    <ObjectProperty IRI="http://example.org/rdsps#hasProduct"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyDomain>
-  <ObjectPropertyRange>
-    <ObjectProperty IRI="http://example.org/rdsps#hasProduct"/>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-  </ObjectPropertyRange>
-
-  <Declaration><ObjectProperty IRI="http://example.org/rdsps#hasType"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasType</IRI>
-    <Literal xml:lang="en">hasType</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#hasType</IRI>
-    <Literal xml:lang="en">Relates an Asset to its Type (%) aspect.</Literal>
-  </AnnotationAssertion>
-  <ObjectPropertyDomain>
-    <ObjectProperty IRI="http://example.org/rdsps#hasType"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyDomain>
-  <ObjectPropertyRange>
-    <ObjectProperty IRI="http://example.org/rdsps#hasType"/>
-    <Class IRI="http://example.org/rdsps#TypeAspect"/>
-  </ObjectPropertyRange>
-
-  <Declaration><ObjectProperty IRI="http://example.org/rdsps#hasComponent"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasComponent</IRI>
-    <Literal xml:lang="en">hasComponent</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#hasComponent</IRI>
-    <Literal xml:lang="en">Composition: asset has component (part relationship).</Literal>
-  </AnnotationAssertion>
-  <ObjectPropertyDomain>
-    <ObjectProperty IRI="http://example.org/rdsps#hasComponent"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyDomain>
-  <ObjectPropertyRange>
-    <ObjectProperty IRI="http://example.org/rdsps#hasComponent"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyRange>
-
-  <Declaration><ObjectProperty IRI="http://example.org/rdsps#partOf"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#partOf</IRI>
-    <Literal xml:lang="en">partOf</Literal>
-  </AnnotationAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <IRI>http://example.org/rdsps#partOf</IRI>
-    <Literal xml:lang="en">Inverse of hasComponent.</Literal>
-  </AnnotationAssertion>
-  <ObjectPropertyDomain>
-    <ObjectProperty IRI="http://example.org/rdsps#partOf"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyDomain>
-  <ObjectPropertyRange>
-    <ObjectProperty IRI="http://example.org/rdsps#partOf"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </ObjectPropertyRange>
-
-  <!-- Declare inverse relationship hasComponent inverseOf partOf -->
-  <InverseObjectProperties>
-    <ObjectProperty IRI="http://example.org/rdsps#hasComponent"/>
-    <ObjectProperty IRI="http://example.org/rdsps#partOf"/>
-  </InverseObjectProperties>
-
-  <!-- Declarations: Data properties -->
+  <!-- Datatype property declaration -->
   <Declaration><DatatypeProperty IRI="http://example.org/rdsps#hasRDSDesignation"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasRDSDesignation</IRI>
-    <Literal xml:lang="en">hasRDSDesignation</Literal>
-  </AnnotationAssertion>
   <DataPropertyDomain>
     <DatatypeProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
     <Class IRI="http://example.org/rdsps#Asset"/>
   </DataPropertyDomain>
   <DataPropertyRange>
     <DatatypeProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
-    <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-  </DataPropertyRange>
-
-  <Declaration><DatatypeProperty IRI="http://example.org/rdsps#hasLocationCode"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasLocationCode</IRI>
-    <Literal xml:lang="en">hasLocationCode</Literal>
-  </AnnotationAssertion>
-  <DataPropertyDomain>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasLocationCode"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </DataPropertyDomain>
-  <DataPropertyRange>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasLocationCode"/>
-    <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-  </DataPropertyRange>
-
-  <Declaration><DatatypeProperty IRI="http://example.org/rdsps#hasFunctionCode"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasFunctionCode</IRI>
-    <Literal xml:lang="en">hasFunctionCode</Literal>
-  </AnnotationAssertion>
-  <DataPropertyDomain>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasFunctionCode"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </DataPropertyDomain>
-  <DataPropertyRange>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasFunctionCode"/>
-    <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-  </DataPropertyRange>
-
-  <Declaration><DatatypeProperty IRI="http://example.org/rdsps#hasProductCode"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasProductCode</IRI>
-    <Literal xml:lang="en">hasProductCode</Literal>
-  </AnnotationAssertion>
-  <DataPropertyDomain>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasProductCode"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </DataPropertyDomain>
-  <DataPropertyRange>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasProductCode"/>
-    <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-  </DataPropertyRange>
-
-  <Declaration><DatatypeProperty IRI="http://example.org/rdsps#hasTypeCode"/></Declaration>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#hasTypeCode</IRI>
-    <Literal xml:lang="en">hasTypeCode</Literal>
-  </AnnotationAssertion>
-  <DataPropertyDomain>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasTypeCode"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
-  </DataPropertyDomain>
-  <DataPropertyRange>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasTypeCode"/>
     <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
   </DataPropertyRange>
 
   <!-- Example individuals -->
-
-  <!-- WF01 : Wind Farm -->
-  <Declaration>
-    <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
-  </Declaration>
+  <Declaration><NamedIndividual IRI="http://example.org/rdsps#WF01"/></Declaration>
   <ClassAssertion>
-    <Class IRI="http://example.org/rdsps#WindFarm"/>
+    <Class IRI="http://example.org/rdsps#Location"/>
     <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
   </ClassAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#WF01</IRI>
-    <Literal xml:lang="en">Wind Farm 01</Literal>
-  </AnnotationAssertion>
   <DataPropertyAssertion>
     <DataProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
     <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
     <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">+WF01</Literal>
   </DataPropertyAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasLocationCode"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">WF01</Literal>
-  </DataPropertyAssertion>
 
-  <!-- GEN : FunctionAspect (generation) -->
-  <Declaration><NamedIndividual IRI="http://example.org/rdsps#GEN"/></Declaration>
+  <Declaration><NamedIndividual IRI="http://example.org/rdsps#TR01"/></Declaration>
   <ClassAssertion>
-    <Class IRI="http://example.org/rdsps#FunctionAspect"/>
-    <NamedIndividual IRI="http://example.org/rdsps#GEN"/>
+    <Class IRI="http://example.org/rdsps#ProductAspect"/>
+    <NamedIndividual IRI="http://example.org/rdsps#TR01"/>
   </ClassAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#GEN</IRI>
-    <Literal xml:lang="en">Generation System</Literal>
-  </AnnotationAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasFunctionCode"/>
-    <NamedIndividual IRI="http://example.org/rdsps#GEN"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">GEN</Literal>
-  </DataPropertyAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
-    <NamedIndividual IRI="http://example.org/rdsps#GEN"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">=GEN</Literal>
-  </DataPropertyAssertion>
-
-  <!-- WT03 : Turbine 03 -->
-  <Declaration><NamedIndividual IRI="http://example.org/rdsps#WT03"/></Declaration>
-  <ClassAssertion>
-    <Class IRI="http://example.org/rdsps#Turbine"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
-  </ClassAssertion>
-  <AnnotationAssertion>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <IRI>http://example.org/rdsps#WT03</IRI>
-    <Literal xml:lang="en">Wind Turbine 03</Literal>
-  </AnnotationAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">+WF01 =GEN -WT03</Literal>
-  </DataPropertyAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasLocationCode"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">WF01</Literal>
-  </DataPropertyAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasFunctionCode"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">GEN</Literal>
-  </DataPropertyAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasProductCode"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">WT03</Literal>
-  </DataPropertyAssertion>
   <ObjectPropertyAssertion>
     <ObjectProperty IRI="http://example.org/rdsps#locatedIn"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
+    <NamedIndividual IRI="http://example.org/rdsps#TR01"/>
     <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
   </ObjectPropertyAssertion>
-  <ObjectPropertyAssertion>
-    <ObjectProperty IRI="http://example.org/rdsps#hasFunction"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WT03"/>
-    <NamedIndividual IRI="http://example.org/rdsps#GEN"/>
-  </ObjectPropertyAssertion>
+  <DataPropertyAssertion>
+    <DataProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
+    <NamedIndividual IRI="http://example.org/rdsps#TR01"/>
+    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">+WF01 =DIS -TR01</Literal>
+  </DataPropertyAssertion>
 
-  <!-- GBX01 : Gearbox inside Turbine 03 -->
-  <Declaration><NamedIndividual IRI="http://example.org/rdsps#GBX01"/></Declaration>
-  <ClassAssertion>
-    <Class IRI="http://example.org/rdsps#Gearbox"/>
-    <NamedIndividual IRI="http://example.org/rds
+</Ontology>
