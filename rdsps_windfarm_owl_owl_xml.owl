@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Ontology IRI="http://example.org/rdsps"
+<Ontology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="rdsps_windfarm_owl_owl_xml.xsd" IRI="http://example.org/rdsps"
           xmlns="http://www.w3.org/2002/07/owl#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
