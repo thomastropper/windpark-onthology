@@ -1,76 +1,257 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Ontology xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="rdsps_windfarm_owl_owl_xml.xsd" IRI="http://example.org/rdsps"
+<Ontology IRI="http://example.org/rdsps"
           xmlns="http://www.w3.org/2002/07/owl#"
           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
           xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 
-  <!-- Basic annotations -->
+  <!-- Ontology metadata -->
   <Annotation>
     <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <Literal xml:lang="en">RDS-PS Example Ontology (Minimal)</Literal>
+    <Literal xml:lang="en">RDS-PS Example Ontology (Full OWL/XML)</Literal>
   </Annotation>
 
-  <!-- Class declarations -->
-  <Declaration><Class IRI="http://example.org/rdsps#Asset"/></Declaration>
-  <Declaration><Class IRI="http://example.org/rdsps#Location"/></Declaration>
-  <Declaration><Class IRI="http://example.org/rdsps#ProductAspect"/></Declaration>
+  <Annotation>
+    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    <Literal xml:lang="en">
+      Example ontology inspired by the Protégé Pizza ontology.
+      Models RDS-PS concepts for wind farms and substations.
+    </Literal>
+  </Annotation>
 
-  <!-- Subclass axioms -->
+  <Annotation>
+    <AnnotationProperty IRI="http://www.w3.org/2002/07/owl#versionInfo"/>
+    <Literal>1.0</Literal>
+  </Annotation>
+
+  <!-- ===================== -->
+  <!-- Classes -->
+  <!-- ===================== -->
+
+  <Declaration><Class IRI="#Asset"/></Declaration>
+  <Declaration><Class IRI="#Location"/></Declaration>
+  <Declaration><Class IRI="#FunctionAspect"/></Declaration>
+  <Declaration><Class IRI="#ProductAspect"/></Declaration>
+  <Declaration><Class IRI="#TypeAspect"/></Declaration>
+
+  <Declaration><Class IRI="#WindFarm"/></Declaration>
+  <Declaration><Class IRI="#Substation"/></Declaration>
+
+  <Declaration><Class IRI="#Turbine"/></Declaration>
+  <Declaration><Class IRI="#Gearbox"/></Declaration>
+  <Declaration><Class IRI="#Generator"/></Declaration>
+  <Declaration><Class IRI="#Transformer"/></Declaration>
+
+  <Declaration><Class IRI="#Sensor"/></Declaration>
+  <Declaration><Class IRI="#TemperatureSensor"/></Declaration>
+  <Declaration><Class IRI="#VibrationSensor"/></Declaration>
+
+  <!-- ===================== -->
+  <!-- Class hierarchy -->
+  <!-- ===================== -->
+
   <SubClassOf>
-    <Class IRI="http://example.org/rdsps#Location"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
+    <Class IRI="#Location"/>
+    <Class IRI="#Asset"/>
   </SubClassOf>
 
-  <!-- Object property declaration -->
-  <Declaration><ObjectProperty IRI="http://example.org/rdsps#locatedIn"/></Declaration>
+  <SubClassOf>
+    <Class IRI="#FunctionAspect"/>
+    <Class IRI="#Asset"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#ProductAspect"/>
+    <Class IRI="#Asset"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#TypeAspect"/>
+    <Class IRI="#Asset"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#WindFarm"/>
+    <Class IRI="#Location"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#Substation"/>
+    <Class IRI="#Location"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#Turbine"/>
+    <Class IRI="#ProductAspect"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#Gearbox"/>
+    <Class IRI="#ProductAspect"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#Generator"/>
+    <Class IRI="#ProductAspect"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#Transformer"/>
+    <Class IRI="#ProductAspect"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#Sensor"/>
+    <Class IRI="#ProductAspect"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#TemperatureSensor"/>
+    <Class IRI="#Sensor"/>
+  </SubClassOf>
+
+  <SubClassOf>
+    <Class IRI="#VibrationSensor"/>
+    <Class IRI="#Sensor"/>
+  </SubClassOf>
+
+  <!-- ===================== -->
+  <!-- Object Properties -->
+  <!-- ===================== -->
+
+  <Declaration><ObjectProperty IRI="#locatedIn"/></Declaration>
+  <Declaration><ObjectProperty IRI="#hasComponent"/></Declaration>
+  <Declaration><ObjectProperty IRI="#partOf"/></Declaration>
+  <Declaration><ObjectProperty IRI="#hasFunction"/></Declaration>
+
   <ObjectPropertyDomain>
-    <ObjectProperty IRI="http://example.org/rdsps#locatedIn"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
+    <ObjectProperty IRI="#locatedIn"/>
+    <Class IRI="#Asset"/>
   </ObjectPropertyDomain>
+
   <ObjectPropertyRange>
-    <ObjectProperty IRI="http://example.org/rdsps#locatedIn"/>
-    <Class IRI="http://example.org/rdsps#Location"/>
+    <ObjectProperty IRI="#locatedIn"/>
+    <Class IRI="#Location"/>
   </ObjectPropertyRange>
 
-  <!-- Datatype property declaration -->
-  <Declaration><DatatypeProperty IRI="http://example.org/rdsps#hasRDSDesignation"/></Declaration>
+  <InverseObjectProperties>
+    <ObjectProperty IRI="#hasComponent"/>
+    <ObjectProperty IRI="#partOf"/>
+  </InverseObjectProperties>
+
+  <!-- ===================== -->
+  <!-- Data Properties -->
+  <!-- ===================== -->
+
+  <Declaration><DatatypeProperty IRI="#hasRDSDesignation"/></Declaration>
+  <Declaration><DatatypeProperty IRI="#hasLocationCode"/></Declaration>
+  <Declaration><DatatypeProperty IRI="#hasFunctionCode"/></Declaration>
+  <Declaration><DatatypeProperty IRI="#hasProductCode"/></Declaration>
+
   <DataPropertyDomain>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
-    <Class IRI="http://example.org/rdsps#Asset"/>
+    <DatatypeProperty IRI="#hasRDSDesignation"/>
+    <Class IRI="#Asset"/>
   </DataPropertyDomain>
+
   <DataPropertyRange>
-    <DatatypeProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
+    <DatatypeProperty IRI="#hasRDSDesignation"/>
     <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
   </DataPropertyRange>
 
-  <!-- Example individuals -->
-  <Declaration><NamedIndividual IRI="http://example.org/rdsps#WF01"/></Declaration>
+  <!-- ===================== -->
+  <!-- Individuals -->
+  <!-- ===================== -->
+
+  <!-- Wind Farm -->
+  <Declaration><NamedIndividual IRI="#WF01"/></Declaration>
+
   <ClassAssertion>
-    <Class IRI="http://example.org/rdsps#Location"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
+    <Class IRI="#WindFarm"/>
+    <NamedIndividual IRI="#WF01"/>
   </ClassAssertion>
+
   <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">+WF01</Literal>
+    <DataProperty IRI="#hasRDSDesignation"/>
+    <NamedIndividual IRI="#WF01"/>
+    <Literal>+WF01</Literal>
   </DataPropertyAssertion>
 
-  <Declaration><NamedIndividual IRI="http://example.org/rdsps#TR01"/></Declaration>
+  <!-- Generation function -->
+  <Declaration><NamedIndividual IRI="#GEN"/></Declaration>
+
   <ClassAssertion>
-    <Class IRI="http://example.org/rdsps#ProductAspect"/>
-    <NamedIndividual IRI="http://example.org/rdsps#TR01"/>
+    <Class IRI="#FunctionAspect"/>
+    <NamedIndividual IRI="#GEN"/>
   </ClassAssertion>
+
+  <!-- Turbine -->
+  <Declaration><NamedIndividual IRI="#WT03"/></Declaration>
+
+  <ClassAssertion>
+    <Class IRI="#Turbine"/>
+    <NamedIndividual IRI="#WT03"/>
+  </ClassAssertion>
+
   <ObjectPropertyAssertion>
-    <ObjectProperty IRI="http://example.org/rdsps#locatedIn"/>
-    <NamedIndividual IRI="http://example.org/rdsps#TR01"/>
-    <NamedIndividual IRI="http://example.org/rdsps#WF01"/>
+    <ObjectProperty IRI="#locatedIn"/>
+    <NamedIndividual IRI="#WT03"/>
+    <NamedIndividual IRI="#WF01"/>
   </ObjectPropertyAssertion>
-  <DataPropertyAssertion>
-    <DataProperty IRI="http://example.org/rdsps#hasRDSDesignation"/>
-    <NamedIndividual IRI="http://example.org/rdsps#TR01"/>
-    <Literal xml:datatype="http://www.w3.org/2001/XMLSchema#string">+WF01 =DIS -TR01</Literal>
-  </DataPropertyAssertion>
+
+  <ObjectPropertyAssertion>
+    <ObjectProperty IRI="#hasFunction"/>
+    <NamedIndividual IRI="#WT03"/>
+    <NamedIndividual IRI="#GEN"/>
+  </ObjectPropertyAssertion>
+
+  <!-- Gearbox -->
+  <Declaration><NamedIndividual IRI="#GBX01"/></Declaration>
+
+  <ClassAssertion>
+    <Class IRI="#Gearbox"/>
+    <NamedIndividual IRI="#GBX01"/>
+  </ClassAssertion>
+
+  <ObjectPropertyAssertion>
+    <ObjectProperty IRI="#partOf"/>
+    <NamedIndividual IRI="#GBX01"/>
+    <NamedIndividual IRI="#WT03"/>
+  </ObjectPropertyAssertion>
+
+  <!-- Temperature Sensor -->
+  <Declaration><NamedIndividual IRI="#TMP01"/></Declaration>
+
+  <ClassAssertion>
+    <Class IRI="#TemperatureSensor"/>
+    <NamedIndividual IRI="#TMP01"/>
+  </ClassAssertion>
+
+  <ObjectPropertyAssertion>
+    <ObjectProperty IRI="#partOf"/>
+    <NamedIndividual IRI="#TMP01"/>
+    <NamedIndividual IRI="#GBX01"/>
+  </ObjectPropertyAssertion>
+
+  <!-- Substation -->
+  <Declaration><NamedIndividual IRI="#SS01"/></Declaration>
+
+  <ClassAssertion>
+    <Class IRI="#Substation"/>
+    <NamedIndividual IRI="#SS01"/>
+  </ClassAssertion>
+
+  <!-- Transformer -->
+  <Declaration><NamedIndividual IRI="#TR01"/></Declaration>
+
+  <ClassAssertion>
+    <Class IRI="#Transformer"/>
+    <NamedIndividual IRI="#TR01"/>
+  </ClassAssertion>
+
+  <ObjectPropertyAssertion>
+    <ObjectProperty IRI="#locatedIn"/>
+    <NamedIndividual IRI="#TR01"/>
+    <NamedIndividual IRI="#SS01"/>
+  </ObjectPropertyAssertion>
 
 </Ontology>
