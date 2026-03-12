@@ -1,257 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Ontology IRI="http://example.org/rdsps"
-          xmlns="http://www.w3.org/2002/07/owl#"
-          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-          xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-          xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:ex="http://example.org/rdsps#">
 
-  <!-- Ontology metadata -->
-  <Annotation>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#label"/>
-    <Literal xml:lang="en">RDS-PS Example Ontology (Full OWL/XML)</Literal>
-  </Annotation>
+  <owl:Ontology rdf:about="http://example.org/rdsps">
+    <rdfs:label xml:lang="en">RDS-PS Example Ontology (RDF/XML)</rdfs:label>
+    <rdfs:comment xml:lang="en">Example ontology inspired by the Protégé Pizza ontology. Models RDS-PS concepts for wind farms and substations.</rdfs:comment>
+    <owl:versionInfo>1.0</owl:versionInfo>
+  </owl:Ontology>
 
-  <Annotation>
-    <AnnotationProperty IRI="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <Literal xml:lang="en">
-      Example ontology inspired by the Protégé Pizza ontology.
-      Models RDS-PS concepts for wind farms and substations.
-    </Literal>
-  </Annotation>
-
-  <Annotation>
-    <AnnotationProperty IRI="http://www.w3.org/2002/07/owl#versionInfo"/>
-    <Literal>1.0</Literal>
-  </Annotation>
-
-  <!-- ===================== -->
   <!-- Classes -->
-  <!-- ===================== -->
+  <owl:Class rdf:about="#Asset"/>
+  <owl:Class rdf:about="#Location">
+    <rdfs:subClassOf rdf:resource="#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="#FunctionAspect">
+    <rdfs:subClassOf rdf:resource="#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="#ProductAspect">
+    <rdfs:subClassOf rdf:resource="#Asset"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TypeAspect">
+    <rdfs:subClassOf rdf:resource="#Asset"/>
+  </owl:Class>
 
-  <Declaration><Class IRI="#Asset"/></Declaration>
-  <Declaration><Class IRI="#Location"/></Declaration>
-  <Declaration><Class IRI="#FunctionAspect"/></Declaration>
-  <Declaration><Class IRI="#ProductAspect"/></Declaration>
-  <Declaration><Class IRI="#TypeAspect"/></Declaration>
+  <owl:Class rdf:about="#WindFarm">
+    <rdfs:subClassOf rdf:resource="#Location"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Substation">
+    <rdfs:subClassOf rdf:resource="#Location"/>
+  </owl:Class>
 
-  <Declaration><Class IRI="#WindFarm"/></Declaration>
-  <Declaration><Class IRI="#Substation"/></Declaration>
+  <owl:Class rdf:about="#Turbine">
+    <rdfs:subClassOf rdf:resource="#ProductAspect"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Gearbox">
+    <rdfs:subClassOf rdf:resource="#ProductAspect"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Generator">
+    <rdfs:subClassOf rdf:resource="#ProductAspect"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Transformer">
+    <rdfs:subClassOf rdf:resource="#ProductAspect"/>
+  </owl:Class>
 
-  <Declaration><Class IRI="#Turbine"/></Declaration>
-  <Declaration><Class IRI="#Gearbox"/></Declaration>
-  <Declaration><Class IRI="#Generator"/></Declaration>
-  <Declaration><Class IRI="#Transformer"/></Declaration>
+  <owl:Class rdf:about="#Sensor">
+    <rdfs:subClassOf rdf:resource="#ProductAspect"/>
+  </owl:Class>
+  <owl:Class rdf:about="#TemperatureSensor">
+    <rdfs:subClassOf rdf:resource="#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="#VibrationSensor">
+    <rdfs:subClassOf rdf:resource="#Sensor"/>
+  </owl:Class>
 
-  <Declaration><Class IRI="#Sensor"/></Declaration>
-  <Declaration><Class IRI="#TemperatureSensor"/></Declaration>
-  <Declaration><Class IRI="#VibrationSensor"/></Declaration>
-
-  <!-- ===================== -->
-  <!-- Class hierarchy -->
-  <!-- ===================== -->
-
-  <SubClassOf>
-    <Class IRI="#Location"/>
-    <Class IRI="#Asset"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#FunctionAspect"/>
-    <Class IRI="#Asset"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#ProductAspect"/>
-    <Class IRI="#Asset"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#TypeAspect"/>
-    <Class IRI="#Asset"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#WindFarm"/>
-    <Class IRI="#Location"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#Substation"/>
-    <Class IRI="#Location"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#Turbine"/>
-    <Class IRI="#ProductAspect"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#Gearbox"/>
-    <Class IRI="#ProductAspect"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#Generator"/>
-    <Class IRI="#ProductAspect"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#Transformer"/>
-    <Class IRI="#ProductAspect"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#Sensor"/>
-    <Class IRI="#ProductAspect"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#TemperatureSensor"/>
-    <Class IRI="#Sensor"/>
-  </SubClassOf>
-
-  <SubClassOf>
-    <Class IRI="#VibrationSensor"/>
-    <Class IRI="#Sensor"/>
-  </SubClassOf>
-
-  <!-- ===================== -->
   <!-- Object Properties -->
-  <!-- ===================== -->
+  <owl:ObjectProperty rdf:about="#locatedIn">
+    <rdfs:domain rdf:resource="#Asset"/>
+    <rdfs:range rdf:resource="#Location"/>
+  </owl:ObjectProperty>
 
-  <Declaration><ObjectProperty IRI="#locatedIn"/></Declaration>
-  <Declaration><ObjectProperty IRI="#hasComponent"/></Declaration>
-  <Declaration><ObjectProperty IRI="#partOf"/></Declaration>
-  <Declaration><ObjectProperty IRI="#hasFunction"/></Declaration>
+  <owl:ObjectProperty rdf:about="#hasComponent">
+    <owl:inverseOf rdf:resource="#partOf"/>
+  </owl:ObjectProperty>
 
-  <ObjectPropertyDomain>
-    <ObjectProperty IRI="#locatedIn"/>
-    <Class IRI="#Asset"/>
-  </ObjectPropertyDomain>
+  <owl:ObjectProperty rdf:about="#partOf">
+    <owl:inverseOf rdf:resource="#hasComponent"/>
+  </owl:ObjectProperty>
 
-  <ObjectPropertyRange>
-    <ObjectProperty IRI="#locatedIn"/>
-    <Class IRI="#Location"/>
-  </ObjectPropertyRange>
+  <owl:ObjectProperty rdf:about="#hasFunction"/>
 
-  <InverseObjectProperties>
-    <ObjectProperty IRI="#hasComponent"/>
-    <ObjectProperty IRI="#partOf"/>
-  </InverseObjectProperties>
-
-  <!-- ===================== -->
   <!-- Data Properties -->
-  <!-- ===================== -->
+  <owl:DatatypeProperty rdf:about="#hasRDSDesignation">
+    <rdfs:domain rdf:resource="#Asset"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="#hasLocationCode"/>
+  <owl:DatatypeProperty rdf:about="#hasFunctionCode"/>
+  <owl:DatatypeProperty rdf:about="#hasProductCode"/>
 
-  <Declaration><DatatypeProperty IRI="#hasRDSDesignation"/></Declaration>
-  <Declaration><DatatypeProperty IRI="#hasLocationCode"/></Declaration>
-  <Declaration><DatatypeProperty IRI="#hasFunctionCode"/></Declaration>
-  <Declaration><DatatypeProperty IRI="#hasProductCode"/></Declaration>
-
-  <DataPropertyDomain>
-    <DatatypeProperty IRI="#hasRDSDesignation"/>
-    <Class IRI="#Asset"/>
-  </DataPropertyDomain>
-
-  <DataPropertyRange>
-    <DatatypeProperty IRI="#hasRDSDesignation"/>
-    <Datatype IRI="http://www.w3.org/2001/XMLSchema#string"/>
-  </DataPropertyRange>
-
-  <!-- ===================== -->
   <!-- Individuals -->
-  <!-- ===================== -->
+  <owl:NamedIndividual rdf:about="#WF01">
+    <rdf:type rdf:resource="#WindFarm"/>
+    <ex:hasRDSDesignation>+WF01</ex:hasRDSDesignation>
+  </owl:NamedIndividual>
 
-  <!-- Wind Farm -->
-  <Declaration><NamedIndividual IRI="#WF01"/></Declaration>
+  <owl:NamedIndividual rdf:about="#GEN">
+    <rdf:type rdf:resource="#FunctionAspect"/>
+  </owl:NamedIndividual>
 
-  <ClassAssertion>
-    <Class IRI="#WindFarm"/>
-    <NamedIndividual IRI="#WF01"/>
-  </ClassAssertion>
+  <owl:NamedIndividual rdf:about="#WT03">
+    <rdf:type rdf:resource="#Turbine"/>
+    <ex:locatedIn rdf:resource="#WF01"/>
+    <ex:hasFunction rdf:resource="#GEN"/>
+  </owl:NamedIndividual>
 
-  <DataPropertyAssertion>
-    <DataProperty IRI="#hasRDSDesignation"/>
-    <NamedIndividual IRI="#WF01"/>
-    <Literal>+WF01</Literal>
-  </DataPropertyAssertion>
+  <owl:NamedIndividual rdf:about="#GBX01">
+    <rdf:type rdf:resource="#Gearbox"/>
+    <ex:partOf rdf:resource="#WT03"/>
+  </owl:NamedIndividual>
 
-  <!-- Generation function -->
-  <Declaration><NamedIndividual IRI="#GEN"/></Declaration>
+  <owl:NamedIndividual rdf:about="#TMP01">
+    <rdf:type rdf:resource="#TemperatureSensor"/>
+    <ex:partOf rdf:resource="#GBX01"/>
+  </owl:NamedIndividual>
 
-  <ClassAssertion>
-    <Class IRI="#FunctionAspect"/>
-    <NamedIndividual IRI="#GEN"/>
-  </ClassAssertion>
+  <owl:NamedIndividual rdf:about="#SS01">
+    <rdf:type rdf:resource="#Substation"/>
+  </owl:NamedIndividual>
 
-  <!-- Turbine -->
-  <Declaration><NamedIndividual IRI="#WT03"/></Declaration>
+  <owl:NamedIndividual rdf:about="#TR01">
+    <rdf:type rdf:resource="#Transformer"/>
+    <ex:locatedIn rdf:resource="#SS01"/>
+  </owl:NamedIndividual>
 
-  <ClassAssertion>
-    <Class IRI="#Turbine"/>
-    <NamedIndividual IRI="#WT03"/>
-  </ClassAssertion>
-
-  <ObjectPropertyAssertion>
-    <ObjectProperty IRI="#locatedIn"/>
-    <NamedIndividual IRI="#WT03"/>
-    <NamedIndividual IRI="#WF01"/>
-  </ObjectPropertyAssertion>
-
-  <ObjectPropertyAssertion>
-    <ObjectProperty IRI="#hasFunction"/>
-    <NamedIndividual IRI="#WT03"/>
-    <NamedIndividual IRI="#GEN"/>
-  </ObjectPropertyAssertion>
-
-  <!-- Gearbox -->
-  <Declaration><NamedIndividual IRI="#GBX01"/></Declaration>
-
-  <ClassAssertion>
-    <Class IRI="#Gearbox"/>
-    <NamedIndividual IRI="#GBX01"/>
-  </ClassAssertion>
-
-  <ObjectPropertyAssertion>
-    <ObjectProperty IRI="#partOf"/>
-    <NamedIndividual IRI="#GBX01"/>
-    <NamedIndividual IRI="#WT03"/>
-  </ObjectPropertyAssertion>
-
-  <!-- Temperature Sensor -->
-  <Declaration><NamedIndividual IRI="#TMP01"/></Declaration>
-
-  <ClassAssertion>
-    <Class IRI="#TemperatureSensor"/>
-    <NamedIndividual IRI="#TMP01"/>
-  </ClassAssertion>
-
-  <ObjectPropertyAssertion>
-    <ObjectProperty IRI="#partOf"/>
-    <NamedIndividual IRI="#TMP01"/>
-    <NamedIndividual IRI="#GBX01"/>
-  </ObjectPropertyAssertion>
-
-  <!-- Substation -->
-  <Declaration><NamedIndividual IRI="#SS01"/></Declaration>
-
-  <ClassAssertion>
-    <Class IRI="#Substation"/>
-    <NamedIndividual IRI="#SS01"/>
-  </ClassAssertion>
-
-  <!-- Transformer -->
-  <Declaration><NamedIndividual IRI="#TR01"/></Declaration>
-
-  <ClassAssertion>
-    <Class IRI="#Transformer"/>
-    <NamedIndividual IRI="#TR01"/>
-  </ClassAssertion>
-
-  <ObjectPropertyAssertion>
-    <ObjectProperty IRI="#locatedIn"/>
-    <NamedIndividual IRI="#TR01"/>
-    <NamedIndividual IRI="#SS01"/>
-  </ObjectPropertyAssertion>
-
-</Ontology>
+</rdf:RDF>
